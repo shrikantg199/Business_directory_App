@@ -12,6 +12,7 @@ const TabLayout = () => {
       <Tabs.Screen
         name="home"
         options={{
+          headerShown: false,
           tabBarLabel: "Home",
           tabBarActiveTintColor: colors.primary,
           tabBarIcon: ({ color }) => (
@@ -22,6 +23,7 @@ const TabLayout = () => {
       <Tabs.Screen
         name="explore"
         options={{
+          headerShown: false,
           tabBarLabel: "Explore",
           tabBarActiveTintColor: colors.primary,
           tabBarIcon: ({ color }) => (
@@ -32,6 +34,7 @@ const TabLayout = () => {
       <Tabs.Screen
         name="profile"
         options={{
+          headerShown: false,
           tabBarLabel: "Profile",
           tabBarActiveTintColor: colors.primary,
           tabBarIcon: ({ color }) => (
