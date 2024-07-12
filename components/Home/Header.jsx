@@ -7,7 +7,13 @@ const Header = () => {
   const { user } = useUser();
   return (
     <View
-      style={{ padding: 20, paddingTop: 40, backgroundColor: colors.primary }}
+      style={{
+        padding: 20,
+        paddingTop: 40,
+        backgroundColor: colors.primary,
+        borderBottomEndRadius: 20,
+        borderBottomStartRadius: 20,
+      }}
     >
       <View
         style={{
@@ -52,7 +58,12 @@ const Header = () => {
         />
         <TextInput
           placeholder="Search"
-          style={{ borderColor: "#101010", color: "#EFEFEF", fontSize: 20 }}
+          style={{
+            borderColor: "#101010",
+            color: "#1F1F1F",
+            fontSize: 16,
+            width: 220,
+          }}
         />
       </View>
     </View>
