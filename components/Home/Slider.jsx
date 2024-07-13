@@ -12,13 +12,13 @@ const Slider = () => {
     const q = query(collection(db, "slider"));
     const querySnapshot = await getDocs(q);
     querySnapshot.forEach((doc) => {
-      console.log(doc.data());
+      //console.log(doc.data());
       setSliderList((prev) => [...prev, doc.data()]);
     });
   };
   return (
     <View style={{ padding: 14 }}>
-      <Text style={{ fontWeight: 800, paddingBottom: 10, fontSize: 24 }}>
+      <Text style={{ fontWeight: 800, paddingBottom: 10, fontSize: 20 }}>
         #Special For You
       </Text>
 
