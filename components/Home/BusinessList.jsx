@@ -14,7 +14,7 @@ const BusinessList = () => {
     setBusiness([]);
     const querySnapshot = await getDocs(q);
     querySnapshot.forEach((doc) => {
-      console.log(doc.data());
+      //console.log(doc.data());
       setBusiness((prev) => [...prev, doc.data()]);
     });
   };
@@ -25,7 +25,8 @@ const BusinessList = () => {
           display: "flex",
           flexDirection: "row",
           justifyContent: "space-between",
-          padding: 10,paddingBottom:20
+          padding: 10,
+          paddingBottom: 20,
         }}
       >
         <Text style={{ fontSize: 18, fontWeight: 600 }}>Popular Business</Text>
@@ -34,6 +35,8 @@ const BusinessList = () => {
       <View>
         <FlatList
           data={business}
+          horizontal={true}
+          showsHorizontalScrollIndicator={false}
           renderItem={({ item, index }) => <BusinessCard business={item} />}
         />
       </View>

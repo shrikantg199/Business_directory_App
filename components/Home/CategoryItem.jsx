@@ -3,7 +3,7 @@ import React from "react";
 
 const CategoryItem = ({ category, OnCategoryPress }) => {
   return (
-    <TouchableOpacity onPress={() => OnCategoryPress(category)}>
+    <TouchableOpacity onPress={() => OnCategoryPress(category.name)}>
       <Image
         source={{ uri: category.icon }}
         style={{

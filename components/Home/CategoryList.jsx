@@ -3,9 +3,11 @@ import React, { useEffect, useState } from "react";
 import { collection, getDocs, query } from "firebase/firestore";
 import { db } from "../../configs/FirebaseConfig";
 import CategoryItem from "./CategoryItem";
+import { useRouter } from "expo-router";
 
 const Category_List = () => {
   const [categories, setCategories] = useState([]);
+  const router = useRouter();
   useEffect(() => {
     getCategoryList();
   }, []);
@@ -42,7 +44,10 @@ const Category_List = () => {
             <CategoryItem
               category={item}
               key={index}
-              OnCategoryPress={(value) => console.log(value.name)}
+              OnCategoryPress={(category) => {
+                //console.log(category);
+                router.push(`/businesslist/${category}`);
+              }}
             />
           )}
         />

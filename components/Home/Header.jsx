@@ -28,10 +28,10 @@ const Header = () => {
           style={{ height: 45, width: 45, borderRadius: 99, marginTop: 10 }}
         />
         <View style={{}}>
-          <Text style={{ fontSize: 20, color: "#EFEFEF", fontWeight: 600 }}>
+          <Text style={{ fontSize: 20, color: colors.white, fontWeight: 600 }}>
             Welcome
           </Text>
-          <Text style={{ fontSize: 15, color: "#EFEFEF", fontWeight: 500 }}>
+          <Text style={{ fontSize: 15, color: colors.white, fontWeight: 500 }}>
             {user?.fullName}
           </Text>
         </View>
@@ -42,7 +42,7 @@ const Header = () => {
           flexDirection: "row",
           alignItems: "center",
           gap: 6,
-          backgroundColor: "#EFEFEF",
+          backgroundColor: colors.white,
           width: 280,
           borderRadius: 99,
           padding: 4,
@@ -59,8 +59,8 @@ const Header = () => {
         <TextInput
           placeholder="Search"
           style={{
-            borderColor: "#101010",
-            color: "#1F1F1F",
+            borderColor: colors.black,
+            color: colors.black,
             fontSize: 16,
             width: 220,
           }}
