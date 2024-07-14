@@ -1,13 +1,13 @@
-import { StyleSheet, Text, View } from "react-native";
+import { ScrollView, StyleSheet, Text, View } from "react-native";
 import React from "react";
 import Header from "../../components/Home/Header";
 import Slider from "../../components/Home/Slider";
-import Category_List from "../../components/Home/Category_List";
+import Category_List from "../../components/Home/CategoryList";
 import BusinessList from "../../components/Home/BusinessList";
 
 const Home = () => {
   return (
-    <View>
+    <ScrollView>
       <View>
         {/* headers */}
         <Header />
@@ -18,7 +18,8 @@ const Home = () => {
         {/* business List */}
         <BusinessList />
       </View>
-    </View>
+      <View style={{ margin: 10 }}></View>
+    </ScrollView>
   );
 };
 

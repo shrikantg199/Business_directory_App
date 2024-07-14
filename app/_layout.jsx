@@ -4,6 +4,7 @@ import { Stack } from "expo-router";
 import { Text } from "react-native";
 import LogInScreen from ".././components/LogInScreen";
 import * as SecureStore from "expo-secure-store";
+import { colors } from "@/constants/Colors";
 
 const tokenCache = {
   async getToken(key) {
@@ -43,7 +44,7 @@ export default function RootLayout() {
           screenOptions={{
             headerShown: false,
             headerStyle: {
-              backgroundColor: "#f4511e",
+              backgroundColor: colors.primary,
             },
             headerTintColor: "#fff",
             headerTitleStyle: {

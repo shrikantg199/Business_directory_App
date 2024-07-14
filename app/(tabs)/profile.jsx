@@ -5,7 +5,7 @@ import { useAuth, useUser } from "@clerk/clerk-expo";
 const profile = () => {
   const { user } = useUser();
   const { signOut } = useAuth();
-  console.log(user);
+  //console.log(user);
   return (
     <View>
       <Text>Hello {user?.emailAddresses[0].emailAddress}</Text>
