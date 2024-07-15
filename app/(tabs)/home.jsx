@@ -7,7 +7,7 @@ import BusinessList from "../../components/Home/BusinessList";
 
 const Home = () => {
   return (
-    <ScrollView>
+    <ScrollView showsVerticalScrollIndicator={false}>
       <View>
         {/* headers */}
         <Header />

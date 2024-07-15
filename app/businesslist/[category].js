@@ -1,11 +1,13 @@
-import { View, Text, FlatList, Image } from "react-native";
+import { View, Text, FlatList, Image, ActivityIndicator } from "react-native";
 import React, { useEffect, useState } from "react";
 import { useLocalSearchParams, useNavigation } from "expo-router";
 import { collection, getDocs, query, where } from "firebase/firestore";
 import { db } from "../../configs/FirebaseConfig";
 import BusinessListCard from "../../components/businessList/BusinessListCard";
+import { colors } from "../../constants/Colors";
 
 const businessList = () => {
+  const [loading, setLoading] = useState(false);
   const [business, setBusiness] = useState([]);
   const navigate = useNavigation();
   const { category } = useLocalSearchParams();
@@ -19,6 +21,7 @@ const businessList = () => {
     getBusinessList();
   }, [category]);
   const getBusinessList = async () => {
+    setLoading(true);
     const q = query(
       collection(db, "Business_List"),
       where("category", "==", category)
@@ -29,17 +32,37 @@ const businessList = () => {
       console.log(doc.data());
       setBusiness((prev) => [...prev, doc.data()]);
     });
+    setLoading(false);
   };
 
   return (
     <View>
-     
-      <FlatList
-        data={business}
-        renderItem={({ item, index }) => (
-          <BusinessListCard key={index} business={item} />
-        )}
-      />
+      {business.length > 0 && loading == false ? (
+        <FlatList
+          data={business}
+          renderItem={({ item, index }) => (
+            <BusinessListCard key={index} business={item} />
+          )}
+        />
+      ) : loading ? (
+        <ActivityIndicator
+          size={"large"}
+          color={colors.primary}
+          style={{ marginTop: 96 }}
+        />
+      ) : (
+        <Text
+          style={{
+            color: "#553C3F",
+            fontWeight: 900,
+            fontSize: 20,
+            marginTop: "50%",
+            textAlign: "center",
+          }}
+        >
+          No Business Found
+        </Text>
+      )}
     </View>
   );
 };

@@ -28,9 +28,7 @@ const BusinessCard = ({ business }) => {
           <Text style={{ fontSize: 16, fontWeight: "bold", paddingTop: 2 }}>
             {business.name}
           </Text>
-          <Text style={{ fontSize: 14,  }}>
-            {business.address}
-          </Text>
+          <Text style={{ fontSize: 14 }}>{business.address}</Text>
         </View>
         <View
           style={{
@@ -49,19 +47,19 @@ const BusinessCard = ({ business }) => {
           >
             <Image
               source={require("../../assets/star.png")}
-              style={{ width: 20, height: 20 }}
+              style={{ width: 14, height: 14 }}
             />
             <Text>4.5</Text>
           </View>
           <View
             style={{
               backgroundColor: colors.primary,
-              padding:6,
+              padding: 6,
               borderRadius: 10,
-              alignItems:"center"
+              alignItems: "center",
             }}
           >
-            <Text style={{ color: colors.white}}>{business.category}</Text>
+            <Text style={{ color: colors.white }}>{business.category}</Text>
           </View>
         </View>
       </View>

@@ -37,7 +37,9 @@ const BusinessList = () => {
           data={business}
           horizontal={true}
           showsHorizontalScrollIndicator={false}
-          renderItem={({ item, index }) => <BusinessCard business={item} />}
+          renderItem={({ item, index }) => (
+            <BusinessCard key={index} business={item} />
+          )}
         />
       </View>
     </View>

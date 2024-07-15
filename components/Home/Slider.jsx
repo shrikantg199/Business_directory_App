@@ -26,8 +26,8 @@ const Slider = () => {
         data={sliderList}
         horizontal={true}
         showsHorizontalScrollIndicator={false}
-        renderItem={({ item, index }) => (
-          <Image
+        renderItem={({ item }) => (
+          <Image key={item.id}
             source={{ uri: item.imageUrl }}
             style={{
               width: 250,
