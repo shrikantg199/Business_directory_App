@@ -1,11 +1,21 @@
-import { Image, ScrollView, StyleSheet, Text, View } from "react-native";
+import {
+  Image,
+  ScrollView,
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  View,
+} from "react-native";
 import React from "react";
 import { colors } from "../../constants/Colors";
+import { useRouter } from "expo-router";
 
 const BusinessListCard = ({ business }) => {
+  const router = useRouter();
   return (
     <ScrollView>
-      <View
+      <TouchableOpacity
+        onPress={() => router.push(`businessdetails/${business.id}`)}
         style={{
           backgroundColor: colors.white,
           margin: 8,
@@ -36,7 +46,12 @@ const BusinessListCard = ({ business }) => {
           </Text>
 
           <View
-            style={{ display: "flex", flexDirection: "row", paddingTop: 10 ,gap:4}}
+            style={{
+              display: "flex",
+              flexDirection: "row",
+              paddingTop: 10,
+              gap: 4,
+            }}
           >
             <Image
               source={require("../../assets/star.png")}
@@ -45,7 +60,7 @@ const BusinessListCard = ({ business }) => {
             <Text style={{}}>4.5</Text>
           </View>
         </View>
-      </View>
+      </TouchableOpacity>
     </ScrollView>
   );
 };

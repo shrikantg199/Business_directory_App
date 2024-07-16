@@ -1,6 +1,6 @@
 import { View, Text, FlatList, Image, ActivityIndicator } from "react-native";
 import React, { useEffect, useState } from "react";
-import { useLocalSearchParams, useNavigation } from "expo-router";
+import { useLocalSearchParams, useNavigation, useRouter } from "expo-router";
 import { collection, getDocs, query, where } from "firebase/firestore";
 import { db } from "../../configs/FirebaseConfig";
 import BusinessListCard from "../../components/businessList/BusinessListCard";
@@ -10,6 +10,7 @@ const businessList = () => {
   const [loading, setLoading] = useState(false);
   const [business, setBusiness] = useState([]);
   const navigate = useNavigation();
+  const router = useRouter();
   const { category } = useLocalSearchParams();
   //console.log(category);
 
@@ -29,8 +30,8 @@ const businessList = () => {
     setBusiness([]);
     const querySnapshot = await getDocs(q);
     querySnapshot.forEach((doc) => {
-      console.log(doc.data());
-      setBusiness((prev) => [...prev, doc.data()]);
+      //console.log(doc.data());
+      setBusiness((prev) => [...prev, { id: doc?.id, ...doc.data() }]);
     });
     setLoading(false);
   };
@@ -40,6 +41,8 @@ const businessList = () => {
       {business.length > 0 && loading == false ? (
         <FlatList
           data={business}
+          refreshing={loading}
+          onRefresh={getBusinessList}
           renderItem={({ item, index }) => (
             <BusinessListCard key={index} business={item} />
           )}

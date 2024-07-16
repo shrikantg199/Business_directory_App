@@ -43,7 +43,7 @@ const Category_List = () => {
           renderItem={({ item, index }) => (
             <CategoryItem
               category={item}
-              key={index}
+              key={item.id}
               OnCategoryPress={(category) => {
                 //console.log(category);
                 router.push(`/businesslist/${category}`);

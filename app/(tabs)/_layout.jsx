@@ -8,7 +8,7 @@ import { colors } from "../../constants/Colors";
 
 const TabLayout = () => {
   return (
-    <Tabs style={styles.tabStyle}>
+    <Tabs style={{ padding: 32 }}>
       <Tabs.Screen
         name="home"
         options={{
@@ -26,6 +26,9 @@ const TabLayout = () => {
           headerShown: false,
           tabBarLabel: "Explore",
           tabBarActiveTintColor: colors.primary,
+          tabBarStyle: {
+            paddingVertical: 8,
+          },
           tabBarIcon: ({ color }) => (
             <FontAwesome name="wpexplorer" size={24} color={color} />
           ),
