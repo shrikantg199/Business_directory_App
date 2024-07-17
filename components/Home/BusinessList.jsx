@@ -14,7 +14,7 @@ const BusinessList = () => {
     setBusiness([]);
     const querySnapshot = await getDocs(q);
     querySnapshot.forEach((doc) => {
-      //console.log(doc.data());
+      console.log(doc.data());
       setBusiness((prev) => [...prev, doc.data()]);
     });
   };

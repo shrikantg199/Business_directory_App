@@ -1,4 +1,4 @@
-import { StyleSheet, Text, View } from "react-native";
+import { ScrollView, StyleSheet, Text, View } from "react-native";
 import React, { useEffect, useState } from "react";
 import { useLocalSearchParams } from "expo-router";
 
@@ -7,6 +7,9 @@ import { db } from "../../configs/FirebaseConfig";
 import { ActivityIndicator } from "react-native";
 import { colors } from "../../constants/Colors";
 import Intro from "../../components/BusinessDetails/Intro";
+import Action from "../../components/BusinessDetails/Action";
+import About from "../../components/BusinessDetails/About";
+import Reviews from "../../components/BusinessDetails/Reviews";
 
 const BusinessDetails = () => {
   const { businessid } = useLocalSearchParams();
@@ -28,7 +31,7 @@ const BusinessDetails = () => {
     }
   };
   return (
-    <View style={{ marginTop: 32 }}>
+    <ScrollView style={{ marginTop: 32 }}>
       {loading ? (
         <ActivityIndicator
           size={"large"}
@@ -40,10 +43,14 @@ const BusinessDetails = () => {
           {/* intro section */}
           <Intro business={business} />
           {/* action button */}
+          <Action business={business} />
           {/* about section */}
+          <About business={business} />
+          {/* reviews */}
+          <Reviews business={business} />
         </View>
       )}
-    </View>
+    </ScrollView>
   );
 };
 

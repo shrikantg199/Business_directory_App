@@ -30,7 +30,7 @@ const businessList = () => {
     setBusiness([]);
     const querySnapshot = await getDocs(q);
     querySnapshot.forEach((doc) => {
-      //console.log(doc.data());
+      console.log(doc.data());
       setBusiness((prev) => [...prev, { id: doc?.id, ...doc.data() }]);
     });
     setLoading(false);
