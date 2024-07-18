@@ -16,7 +16,7 @@ const BusinessCard = ({ business }) => {
         }}
       >
         <Image
-          source={{ uri: business.imageUrl }}
+          source={{ uri: business?.imageUrl }}
           style={{
             width: 200,
             height: 150,
@@ -59,7 +59,7 @@ const BusinessCard = ({ business }) => {
               alignItems: "center",
             }}
           >
-            <Text style={{ color: colors.white }}>{business.category}</Text>
+            <Text style={{ color: colors.white }}>{business?.category}</Text>
           </View>
         </View>
       </View>
