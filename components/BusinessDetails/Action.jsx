@@ -2,6 +2,7 @@ import {
   FlatList,
   Image,
   Linking,
+  Share,
   StyleSheet,
   Text,
   TouchableOpacity,
@@ -36,11 +37,16 @@ const Action = ({ business }) => {
       id: 4,
       name: "Share",
       icon: require("../../assets/share.png"),
-      url: business?.website,
     },
   ];
   const onPressHandler = (item) => {
-    Linking.openURL(item.url);
+    if (item.name == "Share") {
+      Share.share({
+        message: `${business?.name}\nAddress: ${business?.address} `,
+      });
+    } else {
+      Linking.openURL(item.url);
+    }
   };
   return (
     <View style={{ backgroundColor: colors.white, paddingVertical: 4 }}>
@@ -51,7 +57,6 @@ const Action = ({ business }) => {
           justifyContent: "space-between",
           paddingHorizontal: 40,
           alignItems: "center",
-       
         }}
         renderItem={({ item }) => (
           <TouchableOpacity key={item.id} onPress={() => onPressHandler(item)}>

@@ -5,7 +5,7 @@ import { useRouter } from "expo-router";
 import { colors } from "../../constants/Colors";
 const Intro = ({ business }) => {
   const router = useRouter();
-  console.log(business);
+  //console.log(business?.id);
   return (
     <View>
       <View
@@ -37,7 +37,7 @@ const Intro = ({ business }) => {
       <View
         style={{
           paddingHorizontal: 20,
-          paddingVertical:8,
+          paddingVertical: 8,
           marginTop: -40,
           backgroundColor: colors.white,
           borderTopLeftRadius: 25,

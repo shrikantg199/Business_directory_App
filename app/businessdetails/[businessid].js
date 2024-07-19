@@ -6,9 +6,9 @@ import { collection, doc, getDoc } from "firebase/firestore";
 import { db } from "../../configs/FirebaseConfig";
 import { ActivityIndicator } from "react-native";
 import { colors } from "../../constants/Colors";
-import Intro from "../../components/BusinessDetails/Intro";
 import Action from "../../components/BusinessDetails/Action";
 import About from "../../components/BusinessDetails/About";
+import Intro from "../../components/BusinessDetails/Intro";
 import Reviews from "../../components/BusinessDetails/Reviews";
 
 const BusinessDetails = () => {
@@ -26,7 +26,7 @@ const BusinessDetails = () => {
     const docSnap = await getDoc(docRef);
     if (docSnap.exists()) {
       //console.log(docSnap.data());
-      setBusiness(docSnap.data());
+      setBusiness({ id: docSnap.id, ...docSnap.data() });
       setLoading(false);
     }
   };

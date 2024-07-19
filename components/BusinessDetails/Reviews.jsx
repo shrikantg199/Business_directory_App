@@ -1,19 +1,58 @@
 import {
   Button,
+  Image,
   ScrollView,
   StyleSheet,
   Text,
   TextInput,
+  ToastAndroid,
   TouchableOpacity,
   View,
 } from "react-native";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Rating } from "react-native-ratings";
 import { colors } from "../../constants/Colors";
+import { arrayUnion, doc, updateDoc, getDoc } from "firebase/firestore";
+import { db } from "../../configs/FirebaseConfig";
+import { useUser } from "@clerk/clerk-expo";
 
-const Reviews = () => {
+const Reviews = ({ business }) => {
   const [input, setInput] = useState("");
-  const [rating, setRating] = useState();
+  const [rating, setRating] = useState(0);
+  const [reviews, setReviews] = useState(business?.reviews || []);
+  const { user } = useUser();
+ 
+  useEffect(() => {
+    setReviews(business?.reviews || []);
+  }, [business]);
+
+  const onSubmit = async () => {
+    const docRef = doc(db, "Business_List", business?.id);
+    await updateDoc(docRef, {
+      reviews: arrayUnion({
+        rating: rating,
+        comment: input,
+        username: user?.fullName,
+        userImage: user?.imageUrl,
+      }),
+    });
+
+  
+    setReviews([
+      ...reviews,
+      {
+        rating: rating,
+        comment: input,
+        username: user?.fullName,
+        userImage: user?.imageUrl,
+      }
+    ]);
+
+
+    setInput("");
+    setRating(0);
+    ToastAndroid.show("Comment added successfully!", ToastAndroid.BOTTOM);
+  };
 
   return (
     <View
@@ -22,7 +61,7 @@ const Reviews = () => {
         paddingHorizontal: 20,
       }}
     >
-      <Text style={{ fontWeight: 800, fontSize: 22 }}>Reviews</Text>
+      <Text style={{ fontWeight: "800", fontSize: 22 }}>Reviews</Text>
 
       <Rating
         showRating={false}
@@ -45,7 +84,8 @@ const Reviews = () => {
       />
       <TouchableOpacity
         style={{ paddingVertical: 4 }}
-        onPress={() => console.log(input, rating)}
+        onPress={onSubmit}
+        disabled={!input}
       >
         <Text
           style={{
@@ -60,6 +100,45 @@ const Reviews = () => {
           Submit
         </Text>
       </TouchableOpacity>
+
+      {/* Display the comments */}
+      <View>
+        {reviews.map((item, index) => (
+          <View
+            key={index}
+            style={{
+              backgroundColor: colors.white,
+              shadowColor: "#000",
+              elevation: 5,
+              width: "100%",
+              height: 100,
+              marginVertical: 8,
+              borderRadius: 20,
+              display: "flex",
+              flexDirection: "row",
+              alignItems: "center",
+              paddingLeft: 30,
+            }}
+          >
+            <Image
+              source={{ uri: item.userImage }}
+              style={{ width: 40, height: 40, borderRadius: 50 }}
+            />
+            <View style={{ margin: 20 }}>
+              <Text style={{ fontWeight: "800", fontSize: 17 }}>
+                {item.username}
+              </Text>
+              <Text style={{ fontSize: 14 }}>{item.comment}</Text>
+              <Rating
+                imageSize={20}
+                startingValue={item.rating}
+                readonly
+                style={{ paddingVertical: 5 }}
+              />
+            </View>
+          </View>
+        ))}
+      </View>
     </View>
   );
 };
