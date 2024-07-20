@@ -31,7 +31,10 @@ const BusinessDetails = () => {
     }
   };
   return (
-    <ScrollView style={{ marginTop: 32 }}>
+    <ScrollView
+      showsVerticalScrollIndicator={false}
+      style={{ marginTop: 32, marginVertical: 30 }}
+    >
       {loading ? (
         <ActivityIndicator
           size={"large"}

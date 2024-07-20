@@ -10,7 +10,6 @@ const businessList = () => {
   const [loading, setLoading] = useState(false);
   const [business, setBusiness] = useState([]);
   const navigate = useNavigation();
-  const router = useRouter();
   const { category } = useLocalSearchParams();
   //console.log(category);
 

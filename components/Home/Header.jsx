@@ -19,7 +19,7 @@ const Header = () => {
         style={{
           display: "flex",
           flexDirection: "row",
-          gap: 10,
+          gap: 14,
           alignItems: "center",
         }}
       >
@@ -27,7 +27,7 @@ const Header = () => {
           source={{ uri: user?.imageUrl }}
           style={{ height: 45, width: 45, borderRadius: 99, marginTop: 10 }}
         />
-        <View style={{}}>
+        <View style={{ marginTop: 6 }}>
           <Text style={{ fontSize: 20, color: colors.white, fontWeight: 600 }}>
             Welcome
           </Text>
@@ -44,8 +44,8 @@ const Header = () => {
           gap: 6,
           backgroundColor: colors.white,
           width: 280,
-          borderRadius: 99,
-          padding: 4,
+          borderRadius: 15,
+          padding: 6,
           marginTop: 5,
           marginLeft: 40,
         }}

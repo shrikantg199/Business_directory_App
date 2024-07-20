@@ -15,6 +15,7 @@ const TabLayout = () => {
           headerShown: false,
           tabBarLabel: "Home",
           tabBarActiveTintColor: colors.primary,
+       
           tabBarIcon: ({ color }) => (
             <FontAwesome name="home" size={24} color={color} />
           ),
@@ -46,16 +47,6 @@ const TabLayout = () => {
               size={24}
               color={color}
             />
-          ),
-        }}
-      />
-      <Tabs.Screen
-        name="menu"
-        options={{
-          tabBarLabel: "Menu",
-          tabBarActiveTintColor: colors.primary,
-          tabBarIcon: ({ color }) => (
-            <SimpleLineIcons name="menu" size={24} color={color} />
           ),
         }}
       />

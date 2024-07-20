@@ -4,8 +4,9 @@ import { collection, getDocs, query } from "firebase/firestore";
 import { db } from "../../configs/FirebaseConfig";
 import CategoryItem from "./CategoryItem";
 import { useRouter } from "expo-router";
+import { colors } from "../../constants/Colors";
 
-const Category_List = () => {
+const Category_List = ({ explore = false, onCategorySelect }) => {
   const [categories, setCategories] = useState([]);
   const router = useRouter();
   useEffect(() => {
@@ -20,21 +21,30 @@ const Category_List = () => {
       setCategories((prev) => [...prev, doc.data()]);
     });
   };
+  const onCategoryPress = (category) => {
+    if (!explore) {
+      router.push(`/businesslist/${category}`);
+    } else {
+      onCategorySelect(category);
+    }
+  };
   return (
     <View>
-      <View
-        style={{
-          padding: 10,
-          display: "flex",
-          flexDirection: "row",
-          justifyContent: "space-between",
-        }}
-      >
-        <Text style={{ fontWeight: 700, fontSize: 18 }}>Category</Text>
-        <Text style={{ fontWeight: 400, fontSize: 16 }}>View All</Text>
-      </View>
+      {!explore && (
+        <View
+          style={{
+            padding: 10,
+            display: "flex",
+            flexDirection: "row",
+            justifyContent: "space-between",
+          }}
+        >
+          <Text style={{ fontWeight: 700, fontSize: 18 }}>Category</Text>
+          <Text style={{ fontWeight: 400, fontSize: 16 }}>View All</Text>
+        </View>
+      )}
 
-      <View>
+      <View >
         <FlatList
           style={{ padding: 20 }}
           horizontal={true}
@@ -46,7 +56,7 @@ const Category_List = () => {
               key={item.id}
               OnCategoryPress={(category) => {
                 //console.log(category);
-                router.push(`/businesslist/${category}`);
+                onCategoryPress(category);
               }}
             />
           )}

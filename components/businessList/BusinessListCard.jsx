@@ -12,6 +12,7 @@ import { useRouter } from "expo-router";
 
 const BusinessListCard = ({ business }) => {
   const router = useRouter();
+  console.log(business);
   return (
     <ScrollView>
       <TouchableOpacity
