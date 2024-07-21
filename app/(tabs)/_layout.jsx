@@ -1,12 +1,13 @@
-import { StyleSheet, Text, View } from "react-native";
+import { StyleSheet, Text, View, TouchableOpacity } from "react-native";
 import React from "react";
-import { Tabs } from "expo-router";
+import { Tabs, useNavigation } from "expo-router";
 import { FontAwesome } from "@expo/vector-icons";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import { SimpleLineIcons } from "@expo/vector-icons";
 import { colors } from "../../constants/Colors";
 
 const TabLayout = () => {
+  const navigation = useNavigation();
   return (
     <Tabs style={{ padding: 32 }}>
       <Tabs.Screen
@@ -15,7 +16,7 @@ const TabLayout = () => {
           headerShown: false,
           tabBarLabel: "Home",
           tabBarActiveTintColor: colors.primary,
-       
+
           tabBarIcon: ({ color }) => (
             <FontAwesome name="home" size={24} color={color} />
           ),
@@ -24,8 +25,20 @@ const TabLayout = () => {
       <Tabs.Screen
         name="explore"
         options={{
-          headerShown: false,
-          tabBarLabel: "Explore",
+          headerShown: true,
+          headerTitle: "Explore",
+          headerStyle: { backgroundColor: colors.primary },
+          headerLeft: () => (
+            <TouchableOpacity onPress={() => navigation.goBack()}>
+              <FontAwesome
+                name="arrow-left"
+                size={24}
+                color="#fff"
+                style={{ marginLeft: 16 }}
+              />
+            </TouchableOpacity>
+          ),
+          headerTintColor: "#fff",
           tabBarActiveTintColor: colors.primary,
           tabBarStyle: {
             paddingVertical: 8,
@@ -38,8 +51,20 @@ const TabLayout = () => {
       <Tabs.Screen
         name="profile"
         options={{
-          headerShown: false,
-          tabBarLabel: "Profile",
+          headerShown: true,
+          headerTitle: "Profile",
+          headerStyle: { backgroundColor: colors.primary },
+          headerLeft: () => (
+            <TouchableOpacity onPress={() => navigation.goBack()}>
+              <FontAwesome
+                name="arrow-left"
+                size={24}
+                color="#fff"
+                style={{ marginLeft: 16 }}
+              />
+            </TouchableOpacity>
+          ),
+          headerTintColor: "#fff",
           tabBarActiveTintColor: colors.primary,
           tabBarIcon: ({ color }) => (
             <MaterialCommunityIcons

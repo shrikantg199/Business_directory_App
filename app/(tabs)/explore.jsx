@@ -40,17 +40,7 @@ const explore = () => {
           marginVertical: 10,
         }}
       >
-        <Text
-          style={{
-            fontWeight: 800,
-            paddingTop: 40,
-            fontSize: 22,
-            paddingLeft: 20,
-            marginVertical: 8,
-          }}
-        >
-          Explore More
-        </Text>
+       
         {/* search bar */}
         <View
           style={{

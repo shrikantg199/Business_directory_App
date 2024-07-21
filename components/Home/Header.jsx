@@ -1,10 +1,19 @@
-import { Image, StyleSheet, Text, TextInput, View } from "react-native";
+import {
+  Image,
+  StyleSheet,
+  Text,
+  TextInput,
+  TouchableOpacity,
+  View,
+} from "react-native";
 import React from "react";
 import { useUser } from "@clerk/clerk-expo";
 import { colors } from "../../constants/Colors";
 import { AntDesign } from "@expo/vector-icons";
+import { useNavigation } from "expo-router";
 const Header = () => {
   const { user } = useUser();
+  const navigation = useNavigation();
   return (
     <View
       style={{
@@ -15,7 +24,7 @@ const Header = () => {
         borderBottomStartRadius: 20,
       }}
     >
-      <View
+      <TouchableOpacity
         style={{
           display: "flex",
           flexDirection: "row",
@@ -23,10 +32,13 @@ const Header = () => {
           alignItems: "center",
         }}
       >
-        <Image
-          source={{ uri: user?.imageUrl }}
-          style={{ height: 45, width: 45, borderRadius: 99, marginTop: 10 }}
-        />
+        <TouchableOpacity onPress={() => navigation.navigate("profile")}>
+          <Image
+            source={{ uri: user?.imageUrl }}
+            style={{ height: 45, width: 45, borderRadius: 99, marginTop: 10 }}
+          />
+        </TouchableOpacity>
+
         <View style={{ marginTop: 6 }}>
           <Text style={{ fontSize: 20, color: colors.white, fontWeight: 600 }}>
             Welcome
@@ -35,7 +47,7 @@ const Header = () => {
             {user?.fullName}
           </Text>
         </View>
-      </View>
+      </TouchableOpacity>
       <View
         style={{
           display: "flex",
