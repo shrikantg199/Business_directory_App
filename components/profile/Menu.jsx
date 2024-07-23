@@ -28,7 +28,7 @@ const Menu = () => {
       id: "3",
       name: "My Business",
       icons: require("../../assets/Mybusiness.png"),
-      path: "/business/addBusiness",
+      path: "/business/MyBusiness",
     },
     {
       id: "4",

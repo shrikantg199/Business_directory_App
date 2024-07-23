@@ -15,7 +15,7 @@ import { useNavigation } from "expo-router";
 import { colors } from "../../constants/Colors";
 import * as ImagePicker from "expo-image-picker";
 import RNPickerSelect from "react-native-picker-select";
-import { collection, getDocs, query, setDoc } from "firebase/firestore";
+import { collection, doc, getDocs, query, setDoc } from "firebase/firestore";
 import { db, storage } from "../../configs/FirebaseConfig";
 import { getDownloadURL, ref, uploadBytes } from "firebase/storage";
 const AddBusiness = () => {
@@ -56,25 +56,38 @@ const AddBusiness = () => {
         .then((resp) => {
           getDownloadURL(imageRef).then(async (downloadUrl) => {
             console.log(downloadUrl);
-            saveBusinessDetails(downloadUrl);
+            await saveBusinessDetails(downloadUrl);
+            setLoading(false);
           });
         });
-      setLoading(false);
+      setImage(null);
+      setName("");
+      setAbout("");
+      setAddress("");
+      setContact("");
+      setWebsite("");
+      setSelectedCategory("");
     } catch (error) {
       console.error("Error during upload:", error);
     }
   };
   const saveBusinessDetails = async (imageUrl) => {
-    await setDoc(db, "Business_List", Date.now().toString(), {
-      name: name,
-      about: about,
-      contact: contact,
-      address: address,
-      website: website,
-      category: selectedCategory,
-      imageUrl: imageUrl,
-    });
-    ToastAndroid.show("new business added.."), ToastAndroid.LONG;
+    const businessId = Date.now().toString(); // Generate a unique ID
+    try {
+      await setDoc(doc(db, "Business_List", businessId), {
+        name: name || "",
+        about: about || "",
+        contact: contact || "",
+        address: address || "",
+        website: website || "",
+        category: selectedCategory || "",
+        imageUrl: imageUrl || "",
+      });
+      ToastAndroid.show("New business added", ToastAndroid.LONG);
+    } catch (error) {
+      console.error("Error adding business:", error);
+      ToastAndroid.show("Failed to add business", ToastAndroid.LONG);
+    }
   };
   // imagepicker
   const pickImage = async () => {
@@ -227,6 +240,7 @@ const AddBusiness = () => {
         >
           <RNPickerSelect
             placeholder={{ label: "select category", color: colors.gray }}
+            value={selectedCategory}
             onValueChange={(value) => setSelectedCategory(value)}
             items={category}
           />
