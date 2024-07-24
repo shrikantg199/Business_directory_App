@@ -21,8 +21,8 @@ const ExploreBusinessList = ({ business, loading, getBusinessList }) => {
             data={business}
             onRefresh={getBusinessList}
             refreshing={loading}
-            renderItem={({ item, index }) => (
-              <BusinessListCard key={index} business={item} />
+            renderItem={({ item }) => (
+              <BusinessListCard key={item?.id} business={item} />
             )}
           />
         </ScrollView>

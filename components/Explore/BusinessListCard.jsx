@@ -13,9 +13,13 @@ import { useRouter } from "expo-router";
 
 const BusinessListCard = ({ business }) => {
   const router = useRouter();
+
   return (
     <TouchableOpacity
-      onPress={() => router.push(`/businessdetails/${business?.id}`)}
+      onPress={() => {
+        console.log(`Navigating to /businessdetails/${business.id}`);
+        router.push(`/businessdetails/${business?.id}`);
+      }}
       style={{
         margin: 20,
         backgroundColor: colors.white,
@@ -25,7 +29,7 @@ const BusinessListCard = ({ business }) => {
     >
       <View style={{}}>
         <Image
-          source={{ uri: business.imageUrl }}
+          source={{ uri: business?.imageUrl }}
           style={{
             width: "100%",
             height: 200,
@@ -34,8 +38,10 @@ const BusinessListCard = ({ business }) => {
           }}
         />
         <View style={{ padding: 6 }}>
-          <Text style={{ fontWeight: 800, fontSize: 22 }}>{business.name}</Text>
-          <Text style={{ fontSize: 16 }}>{business.address}</Text>
+          <Text style={{ fontWeight: 800, fontSize: 22 }}>
+            {business?.name}
+          </Text>
+          <Text style={{ fontSize: 16 }}>{business?.address}</Text>
         </View>
       </View>
     </TouchableOpacity>

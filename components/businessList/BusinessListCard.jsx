@@ -16,7 +16,7 @@ const BusinessListCard = ({ business }) => {
   return (
     <ScrollView>
       <TouchableOpacity
-        onPress={() => router.push(`businessdetails/${business.id}`)}
+        onPress={() => router.push(`businessdetails/${business?.id}`)}
         style={{
           backgroundColor: colors.white,
           margin: 8,

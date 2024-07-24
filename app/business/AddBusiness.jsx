@@ -18,6 +18,8 @@ import RNPickerSelect from "react-native-picker-select";
 import { collection, doc, getDocs, query, setDoc } from "firebase/firestore";
 import { db, storage } from "../../configs/FirebaseConfig";
 import { getDownloadURL, ref, uploadBytes } from "firebase/storage";
+import { useUser } from "@clerk/clerk-expo";
+
 const AddBusiness = () => {
   const [image, setImage] = useState(null);
   const [name, setName] = useState();
@@ -29,6 +31,7 @@ const AddBusiness = () => {
   const [category, setCategory] = useState([]);
   const [selectedCategory, setSelectedCategory] = useState("");
   const navigate = useNavigation();
+  const { user } = useUser();
   useEffect(() => {
     navigate.setOptions({
       headerShown: true,
@@ -82,6 +85,9 @@ const AddBusiness = () => {
         website: website || "",
         category: selectedCategory || "",
         imageUrl: imageUrl || "",
+        user: user?.fullName || "",
+        userEmail: user?.primaryEmailAddress?.emailAddress || "",
+        userImage: user?.imageUrl || "",
       });
       ToastAndroid.show("New business added", ToastAndroid.LONG);
     } catch (error) {

@@ -42,8 +42,8 @@ const businessList = () => {
           data={business}
           refreshing={loading}
           onRefresh={getBusinessList}
-          renderItem={({ item, index }) => (
-            <BusinessListCard key={index} business={item} />
+          renderItem={({ item }) => (
+            <BusinessListCard key={item?.id} business={item} clg />
           )}
         />
       ) : loading ? (

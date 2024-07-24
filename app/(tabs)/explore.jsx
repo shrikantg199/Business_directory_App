@@ -26,12 +26,12 @@ const explore = () => {
     setLoading(true);
     const querySnapShot = await getDocs(q);
     querySnapShot.forEach((doc) => {
-      setBusinesses((prev) => [...prev, { id: doc.id, ...doc.data() }]);
+      setBusinesses((prev) => [...prev, { id: doc?.id, ...doc?.data() }]);
     });
     setLoading(false);
   };
   return (
-    <View >
+    <View>
       <View
         style={{
           justifyContent: "center",
@@ -40,7 +40,6 @@ const explore = () => {
           marginVertical: 10,
         }}
       >
-       
         {/* search bar */}
         <View
           style={{

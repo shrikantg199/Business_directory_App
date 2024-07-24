@@ -9,14 +9,14 @@ import React, { useEffect, useState } from "react";
 import { collection, getDocs, query } from "firebase/firestore";
 import { db } from "../../configs/FirebaseConfig";
 import BusinessCard from "./BusinessCard";
-import { useRouter } from "expo-router";
+import { useNavigation } from "expo-router";
 
 const BusinessList = () => {
   const [business, setBusiness] = useState([]);
   useEffect(() => {
     getBusinessList();
   }, []);
-  const router = useRouter();
+  const navigation = useNavigation();
   const getBusinessList = async () => {
     const q = query(collection(db, "Business_List"));
     setBusiness([]);
@@ -38,7 +38,9 @@ const BusinessList = () => {
         }}
       >
         <Text style={{ fontSize: 18, fontWeight: 600 }}>Popular Business</Text>
-        <Text style={{ fontSize: 16 }}>View All</Text>
+        <TouchableOpacity onPress={() => navigation.navigate("explore")}>
+          <Text style={{ fontWeight: 400, fontSize: 16 }}>View All</Text>
+        </TouchableOpacity>
       </View>
       <View>
         <FlatList

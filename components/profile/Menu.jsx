@@ -1,6 +1,7 @@
 import {
   FlatList,
   Image,
+  Share,
   StyleSheet,
   Text,
   TouchableOpacity,
@@ -9,8 +10,10 @@ import {
 import React from "react";
 import { colors } from "../../constants/Colors";
 import { useRouter } from "expo-router";
+import { useAuth } from "@clerk/clerk-expo";
 
 const Menu = () => {
+  const { Signout } = useAuth();
   const MenuList = [
     {
       id: "1",
@@ -22,7 +25,7 @@ const Menu = () => {
       id: "2",
       name: "Share APP",
       icons: require("../../assets/share.png"),
-      path: "/business/addBusiness",
+      path: "share",
     },
     {
       id: "3",
@@ -34,11 +37,23 @@ const Menu = () => {
       id: "4",
       name: "Log Out",
       icons: require("../../assets/Logout.png"),
-      path: "/business/addBusiness",
+      path: "Logout",
     },
   ];
   //console.log(MenuList);
   const router = useRouter();
+
+  const navigateItem = (item) => {
+    if (item.path === "Logout") {
+      Signout();
+    } else if (item.path === "share") {
+      Share.share({
+        message: "This is my business",
+      });
+    } else {
+      router.push(item.path);
+    }
+  };
   return (
     <View style={{ paddingVertical: 20 }}>
       <FlatList
@@ -49,7 +64,7 @@ const Menu = () => {
           <TouchableOpacity
             style={styles.menu}
             key={item.id}
-            onPress={() => router.push(item.path)}
+            onPress={() => navigateItem(item)}
           >
             <Image source={item.icons} style={{ width: 40, height: 40 }} />
             <Text>{item.name}</Text>

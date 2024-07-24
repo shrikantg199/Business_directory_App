@@ -1,14 +1,22 @@
-import { FlatList, Image, StyleSheet, Text, View } from "react-native";
+import {
+  FlatList,
+  Image,
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  View,
+} from "react-native";
 import React, { useEffect, useState } from "react";
 import { collection, getDocs, query } from "firebase/firestore";
 import { db } from "../../configs/FirebaseConfig";
 import CategoryItem from "./CategoryItem";
-import { useRouter } from "expo-router";
+import { useNavigation, useRouter } from "expo-router";
 import { colors } from "../../constants/Colors";
 
 const Category_List = ({ explore = false, onCategorySelect }) => {
   const [categories, setCategories] = useState([]);
   const router = useRouter();
+  const navigation = useNavigation();
   useEffect(() => {
     getCategoryList();
   }, []);
@@ -40,11 +48,13 @@ const Category_List = ({ explore = false, onCategorySelect }) => {
           }}
         >
           <Text style={{ fontWeight: 700, fontSize: 18 }}>Category</Text>
-          <Text style={{ fontWeight: 400, fontSize: 16 }}>View All</Text>
+          <TouchableOpacity onPress={() => navigation.navigate("explore")}>
+            <Text style={{ fontWeight: 400, fontSize: 16 }}>View All</Text>
+          </TouchableOpacity>
         </View>
       )}
 
-      <View >
+      <View>
         <FlatList
           style={{ padding: 20 }}
           horizontal={true}
