@@ -13,7 +13,7 @@ import { useRouter } from "expo-router";
 import { useAuth } from "@clerk/clerk-expo";
 
 const Menu = () => {
-  const { Signout } = useAuth();
+  const { signOut } = useAuth();
   const MenuList = [
     {
       id: "1",
@@ -43,9 +43,13 @@ const Menu = () => {
   //console.log(MenuList);
   const router = useRouter();
 
-  const navigateItem = (item) => {
+  const navigateItem = async (item) => {
     if (item.path === "Logout") {
-      Signout();
+      try {
+        await signOut();
+      } catch (error) {
+        console.error("Error signing out: ", error);
+      }
     } else if (item.path === "share") {
       Share.share({
         message: "This is my business",
