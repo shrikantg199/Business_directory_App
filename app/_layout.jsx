@@ -45,7 +45,6 @@ export default function RootLayout() {
             headerShown: false,
             headerStyle: {
               backgroundColor: colors.primary,
-              
             },
             headerTintColor: "#fff",
             headerTitleStyle: {

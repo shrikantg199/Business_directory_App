@@ -51,20 +51,42 @@ const LogInScreen = () => {
         />
       </View>
       <View style={styles.buttonContainer}>
-        <Text style={{ color: colors.white, fontSize: 40 }}>
-          Business Directory App
-        </Text>
-        <Text style={{ color: colors.white, width: 400 }}>
-          your ultimate resource for finding local businesses and services
-          quickly and easily.
-        </Text>
+        <View style={{ paddingVertical: 20 }}>
+          <Text
+            style={{
+              color: colors.black,
+              fontSize: 28,
+              fontWeight: 600,
+            }}
+          >
+            <Text style={{ color: colors.primary }}> Business Directory</Text>{" "}
+            App
+          </Text>
+          <Text
+            style={{
+              color: colors.black,
+              width: 300,
+              textAlign: "center",
+            }}
+          >
+            your ultimate resource for finding local businesses and services
+            quickly and easily.
+          </Text>
+        </View>
+
         <TouchableOpacity style={styles.button} onPress={onPress}>
-          <View style={{ display: "flex", flexDirection: "row" }}>
+          <View
+            style={{
+              display: "flex",
+              flexDirection: "row",
+              alignItems: "center",
+            }}
+          >
             <Image
               source={require("../assets/google.png")}
               style={styles.googleIcon}
             />
-            <Text style={styles.buttonText}>Sign in with Google</Text>
+            <Text style={styles.buttonText}>Let's Get Stared</Text>
           </View>
         </TouchableOpacity>
       </View>
@@ -85,7 +107,7 @@ const styles = StyleSheet.create({
   imageContainer: {
     marginTop: 30,
     backgroundColor: colors.black,
-    borderRadius: 20,
+    borderRadius: 30,
     width: 220,
     height: 420,
     justifyContent: "center",
@@ -97,11 +119,16 @@ const styles = StyleSheet.create({
     borderRadius: 20,
   },
   buttonContainer: {
-    backgroundColor: colors.primary,
+    backgroundColor: colors.white,
     width: "100%",
     height: 500,
-
+    marginTop: -20,
     alignItems: "center",
+    gap: 30,
+    borderTopLeftRadius: 20,
+    borderTopRightRadius: 20,
+    borderColor: colors.gray,
+    
   },
   button: {
     alignItems: "center",
@@ -110,7 +137,8 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     paddingHorizontal: 12,
     paddingVertical: 12,
-    borderRadius: 20,
+    borderRadius: 30,
+    width: 300,
   },
 
   googleIcon: {
@@ -121,6 +149,6 @@ const styles = StyleSheet.create({
   buttonText: {
     color: colors.black,
     fontSize: 18,
-    fontWeight: "700",
+    fontWeight: "500",
   },
 });
