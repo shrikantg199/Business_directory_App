@@ -29,7 +29,7 @@ const LogInScreen = () => {
     try {
       const { createdSessionId, signIn, signUp, setActive } =
         await startOAuthFlow({
-          redirectUrl: Linking.createURL("/dashboard", { scheme: "myapp" }),
+          redirectUrl: Linking.createURL("/home", { scheme: "myapp" }),
         });
 
       if (createdSessionId) {
@@ -108,8 +108,8 @@ const styles = StyleSheet.create({
     marginTop: 30,
     backgroundColor: colors.black,
     borderRadius: 30,
-    width: 220,
-    height: 420,
+    width: 213,
+    height: 413,
     justifyContent: "center",
     alignItems: "center",
   },
@@ -128,7 +128,6 @@ const styles = StyleSheet.create({
     borderTopLeftRadius: 20,
     borderTopRightRadius: 20,
     borderColor: colors.gray,
-    
   },
   button: {
     alignItems: "center",
