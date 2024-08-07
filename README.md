@@ -1,47 +1,48 @@
-# Welcome to your Expo app 👋
+# Business Directory App
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+Welcome to the Business Directory App! This app is built using Expo and React Native, allowing users to browse and discover various businesses in different categories.
+<p align="center">
+<img src="./assets/screenshot.png" alt="Business Directory App" width="400" height="800">
+</p>
+## Features
 
-## Get started
+- **Category Browsing:** Users can browse businesses by categories such as Grocery, Plumber, Ecommerce, Shopping, Salon, and Medical.
+- **Business Details:** View detailed information about businesses, including address, contact information, and website.
+- **Search Functionality:** Search for specific businesses or filter by category.
+- **User-Friendly Interface:** Simple and intuitive user interface for seamless navigation.
+- **Cross-Platform:** Compatible with both iOS and Android devices.
 
-1. Install dependencies
+## Installation
 
-   ```bash
-   npm install
-   ```
+To get started with the Business Directory App, follow these steps:
 
-2. Start the app
+1. **Clone the Repository:**
 
-   ```bash
+    ```bash
+    git clone https://github.com/shrikantg199/Business_directory_App.git
+    cd Business_directory_App
+    ```
+
+2. **Install Dependencies:**
+
+    ```bash
+    npm install
+    ```
+
+3. **Start the Expo Server:**
+
+    ```bash
     npx expo start
-   ```
+    ```
 
-In the output, you'll find options to open the app in a
+4. **Run on Your Device:**
+    - For iOS: Open the Expo Go app and scan the QR code from the terminal.
+    - For Android: Open the Expo Go app and scan the QR code from the terminal.
 
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
+## Technologies Used
 
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
-
-## Get a fresh project
-
-When you're ready, run:
-
-```bash
-npm run reset-project
-```
-
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
-
-## Learn more
-
-To learn more about developing your project with Expo, look at the following resources:
-
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
-
-## Join the community
-
-Join our community of developers creating universal apps.
+- **React Native**
+- **Expo**
+- **JavaScript**
+- **React Navigation** (for navigation)
+- **Axios** (for API calls)
