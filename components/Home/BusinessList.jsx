@@ -10,7 +10,12 @@ import { collection, getDocs, query } from "firebase/firestore";
 import { db } from "../../configs/FirebaseConfig";
 import BusinessCard from "./BusinessCard";
 import { useNavigation } from "expo-router";
-
+import Animated, {
+  BounceIn,
+  FadeIn,
+  FadeOut,
+  LinearTransition,
+} from "react-native-reanimated";
 const BusinessList = () => {
   const [business, setBusiness] = useState([]);
   useEffect(() => {
@@ -27,7 +32,7 @@ const BusinessList = () => {
     });
   };
   return (
-    <View>
+    <Animated.View layout={LinearTransition}>
       <View
         style={{
           display: "flex",
@@ -52,7 +57,7 @@ const BusinessList = () => {
           )}
         />
       </View>
-    </View>
+    </Animated.View>
   );
 };
 

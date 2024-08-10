@@ -12,6 +12,7 @@ import { db } from "../../configs/FirebaseConfig";
 import CategoryItem from "./CategoryItem";
 import { useNavigation, useRouter } from "expo-router";
 import { colors } from "../../constants/Colors";
+import Animated, { LinearTransition } from "react-native-reanimated";
 
 const Category_List = ({ explore = false, onCategorySelect }) => {
   const [categories, setCategories] = useState([]);
@@ -37,7 +38,7 @@ const Category_List = ({ explore = false, onCategorySelect }) => {
     }
   };
   return (
-    <View>
+    <Animated.View layout={LinearTransition}>
       {!explore && (
         <View
           style={{
@@ -72,7 +73,7 @@ const Category_List = ({ explore = false, onCategorySelect }) => {
           )}
         />
       </View>
-    </View>
+    </Animated.View>
   );
 };
 

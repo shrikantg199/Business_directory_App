@@ -11,11 +11,17 @@ import { useUser } from "@clerk/clerk-expo";
 import { colors } from "../../constants/Colors";
 import { AntDesign } from "@expo/vector-icons";
 import { useNavigation } from "expo-router";
+import Animated, {
+  FadeIn,
+  FadeOut,
+  LinearTransition,
+} from "react-native-reanimated";
 const Header = () => {
   const { user } = useUser();
   const navigation = useNavigation();
   return (
-    <View
+    <Animated.View
+      layout={LinearTransition}
       style={{
         padding: 20,
         paddingTop: 40,
@@ -78,7 +84,7 @@ const Header = () => {
           }}
         />
       </View>
-    </View>
+    </Animated.View>
   );
 };
 

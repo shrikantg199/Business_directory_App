@@ -2,6 +2,7 @@ import { FlatList, Image, StyleSheet, Text, View } from "react-native";
 import React, { useEffect, useState } from "react";
 import { db } from "../../configs/FirebaseConfig";
 import { collection, query, getDocs } from "firebase/firestore";
+import Animated, { FadeIn, LinearTransition } from "react-native-reanimated";
 const Slider = () => {
   const [sliderList, setSliderList] = useState([]);
   useEffect(() => {
@@ -17,7 +18,7 @@ const Slider = () => {
     });
   };
   return (
-    <View style={{ padding: 14 }}>
+    <Animated.View layout={LinearTransition} style={{ padding: 14 }}>
       <Text style={{ fontWeight: 800, paddingBottom: 10, fontSize: 20 }}>
         #Special For You
       </Text>
@@ -27,7 +28,8 @@ const Slider = () => {
         horizontal={true}
         showsHorizontalScrollIndicator={false}
         renderItem={({ item }) => (
-          <Image key={item.id}
+          <Image
+            key={item.id}
             source={{ uri: item.imageUrl }}
             style={{
               width: 250,
@@ -39,7 +41,7 @@ const Slider = () => {
           />
         )}
       />
-    </View>
+    </Animated.View>
   );
 };
 
