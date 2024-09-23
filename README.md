@@ -1,9 +1,10 @@
 # Business Directory App
 
 Welcome to the Business Directory App! This app is built using Expo and React Native, allowing users to browse and discover various businesses in different categories.
-<p align="center">
-<img src="./assets/screenshot.png" alt="Business Directory App" width="400" height="800">
-</p>
+
+https://github.com/user-attachments/assets/2d3f96b5-5ab5-4990-a57c-fe69d13a61f2
+
+
 ## Features
 
 - **Category Browsing:** Users can browse businesses by categories such as Grocery, Plumber, Ecommerce, Shopping, Salon, and Medical.
@@ -11,6 +12,9 @@ Welcome to the Business Directory App! This app is built using Expo and React Na
 - **Search Functionality:** Search for specific businesses or filter by category.
 - **User-Friendly Interface:** Simple and intuitive user interface for seamless navigation.
 - **Cross-Platform:** Compatible with both iOS and Android devices.
+<p align="center">
+<img src="./assets/screenshot.png" alt="Business Directory App" width="400" height="800">
+</p>
 
 ## Installation
 
